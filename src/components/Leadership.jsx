@@ -1,5 +1,6 @@
 import Reveal from './Reveal.jsx'
 import { leadership } from '../data/content.js'
+import portrait from '../assets/sony-subrata.webp'
 
 export default function Leadership() {
   return (
@@ -7,10 +8,18 @@ export default function Leadership() {
       <div className="shell">
         <div className="lead__grid">
           <Reveal className="lead__card">
-            <div className="lead__portrait" aria-hidden="true">
-              <span className="lead__initials">SS</span>
-              <span className="lead__frame" />
-            </div>
+            <figure className="lead__portrait">
+              <img
+                className="lead__img"
+                src={portrait}
+                width="1200"
+                height="1274"
+                loading="lazy"
+                decoding="async"
+                alt={`${leadership.name}, ${leadership.role}`}
+              />
+              <span className="lead__frame" aria-hidden="true" />
+            </figure>
             <div className="lead__id">
               <span className="shead__index">06</span>
               <span className="eyebrow">{leadership.eyebrow}</span>
