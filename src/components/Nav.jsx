@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Mark from './Mark.jsx'
-import { company, sections } from '../data/content.js'
+import { sections } from '../data/content.js'
 
 const links = sections.filter((s) => s.nav)
 
@@ -23,7 +23,7 @@ export default function Nav({ active, progress }) {
   return (
     <header className={`nav ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="nav__inner">
-        <Mark subtitle={company.legal} onClick={() => setOpen(false)} />
+        <Mark onClick={() => setOpen(false)} />
 
         <nav className="nav__links" aria-label="Sections">
           {links.map((s) => (

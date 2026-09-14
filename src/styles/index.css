@@ -390,12 +390,6 @@ canvas {
   color: var(--ink-3);
 }
 
-/* Only the short legal name in the nav is held on one line. The footer uses
-   the same block for the long tagline, which must be free to wrap. */
-.nav .mark__text em {
-  white-space: nowrap;
-}
-
 .nav__links {
   margin-left: auto;
   display: flex;

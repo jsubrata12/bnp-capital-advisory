@@ -20,7 +20,7 @@ export default function Mark({ variant = 'nav', subtitle, onClick }) {
       <img className="mark__glyph" src={logo} width="222" height="240" alt="" />
       <span className="mark__text">
         <strong>{company.name}</strong>
-        <em>{subtitle}</em>
+        {subtitle && <em>{subtitle}</em>}
       </span>
     </a>
   )
