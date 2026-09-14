@@ -1432,10 +1432,12 @@ canvas {
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: 50% 12%;
-  /* The source is a bright, cool studio shot; easing it back keeps it from
-     tearing a hole in the ink-black section. Full colour on hover. */
-  filter: grayscale(0.4) contrast(1.05) brightness(0.96);
+  /* Asset is pre-cropped to the 4:5 frame, so nothing is trimmed here. */
+  object-position: 50% 50%;
+  /* Held back just enough that the light studio backdrop does not glare
+     against the ink section — but lightly, so the batik keeps its colour,
+     which happens to sit close to the clay accent. Full colour on hover. */
+  filter: grayscale(0.15) contrast(1.04) brightness(0.94);
   transform: scale(1.05);
   clip-path: inset(0 0 100% 0);
   transition:

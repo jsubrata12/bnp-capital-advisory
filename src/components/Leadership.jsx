@@ -14,8 +14,8 @@ export default function Leadership() {
               <img
                 className="lead__img"
                 src={portrait}
-                width="1200"
-                height="1274"
+                width="800"
+                height="1000"
                 fetchPriority="low"
                 decoding="async"
                 alt={`${leadership.name}, ${leadership.role}`}
