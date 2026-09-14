@@ -9,12 +9,14 @@ export default function Leadership() {
         <div className="lead__grid">
           <Reveal className="lead__card">
             <figure className="lead__portrait">
+              {/* Not lazy-loaded: at 56 kB the saving is negligible, and a
+                  skipped lazy load leaves an empty frame mid-page. */}
               <img
                 className="lead__img"
                 src={portrait}
                 width="1200"
                 height="1274"
-                loading="lazy"
+                fetchPriority="low"
                 decoding="async"
                 alt={`${leadership.name}, ${leadership.role}`}
               />

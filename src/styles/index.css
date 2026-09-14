@@ -45,6 +45,9 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-h);
   -webkit-text-size-adjust: 100%;
+  /* Guard: body-only overflow-x hidden still lets the root scroll sideways,
+     which is what lets a stray wide element zoom the whole page out on iOS. */
+  overflow-x: clip;
 }
 
 body {
@@ -352,6 +355,7 @@ canvas {
   align-items: center;
   gap: 0.7rem;
   flex: none;
+  min-width: 0;
 }
 
 .mark__glyph {
@@ -371,6 +375,7 @@ canvas {
   display: flex;
   flex-direction: column;
   line-height: 1.15;
+  min-width: 0;
 }
 
 .mark__text strong {
@@ -389,6 +394,11 @@ canvas {
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--ink-3);
+}
+
+/* Only the short legal name in the nav is held on one line. The footer uses
+   the same block for the long tagline, which must be free to wrap. */
+.nav .mark__text em {
   white-space: nowrap;
 }
 
@@ -1825,11 +1835,27 @@ canvas {
   color: var(--paper);
 }
 
+.mark--footer {
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.mark--footer .mark__glyph {
+  margin-top: 2px;
+}
+
+.mark--footer .mark__text {
+  min-width: 0;
+  gap: 0.2rem;
+}
+
 .mark--footer .mark__text em {
   color: rgba(245, 243, 238, 0.5);
   text-transform: none;
   letter-spacing: 0.06em;
   font-size: 0.625rem;
+  line-height: 1.5;
+  max-width: 34ch;
 }
 
 .footer__back {
@@ -2061,6 +2087,23 @@ canvas {
 
   .footer__base {
     flex-direction: column;
+  }
+
+  /* Wide mono tracking is what pushes these strings past the viewport */
+  .hero__eyebrow,
+  .pillar__kicker {
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+  }
+
+  .footer__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .mark--footer .mark__text em {
+    max-width: none;
   }
 }
 

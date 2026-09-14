@@ -18,8 +18,11 @@ export default function Contact() {
             {contact.body}
           </Reveal>
 
-          <div className="contact__details">
-            <Reveal className="card" delay={160}>
+          {/* One reveal on the container, not per card: the container's own
+              background provides the hairline dividers, so fading the cards
+              individually briefly exposes it as a solid grey slab. */}
+          <Reveal className="contact__details" delay={160}>
+            <div className="card">
               <span className="eyebrow">Office</span>
               <p className="card__strong">
                 {company.name}
@@ -31,9 +34,9 @@ export default function Contact() {
                   <span key={line}>{line}</span>
                 ))}
               </address>
-            </Reveal>
+            </div>
 
-            <Reveal className="card" delay={240}>
+            <div className="card">
               <span className="eyebrow">Enquiries</span>
               <a className="card__link" href={`mailto:${company.email}`}>
                 {company.email}
@@ -44,8 +47,8 @@ export default function Contact() {
               <a className="btn btn--solid card__btn" href={`mailto:${company.email}`}>
                 Start a conversation
               </a>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
