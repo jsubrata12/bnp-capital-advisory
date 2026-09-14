@@ -9,11 +9,15 @@ export const company = {
   address: ['32nd Floor', 'Office 88, Kota Kasablanka', 'Jakarta 12870', 'Indonesia'],
 }
 
+// `short` is used only by the desktop nav, which cannot fit the full titles:
+// the nav bar is capped at the 1240px shell, so it does not gain room on wider
+// screens. Full titles are still used by the rail, the mobile sheet and the
+// section headers.
 export const sections = [
   { id: 'thesis', index: '01', label: 'Thesis', nav: true },
-  { id: 'edge', index: '02', label: 'Our Edge', nav: true },
-  { id: 'model', index: '03', label: 'Origination Model', nav: true },
-  { id: 'pillars', index: '04', label: 'Investment Pillars', nav: true },
+  { id: 'edge', index: '02', label: 'Our Edge', short: 'Edge', nav: true },
+  { id: 'model', index: '03', label: 'Origination Model', short: 'Model', nav: true },
+  { id: 'pillars', index: '04', label: 'Investment Pillars', short: 'Pillars', nav: true },
   { id: 'about', index: '05', label: 'About', nav: true },
   { id: 'leadership', index: '06', label: 'Leadership', nav: false },
   { id: 'partner', index: '07', label: 'How We Partner', nav: false },

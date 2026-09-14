@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { sections } from '../data/content.js'
+import Mark from './Mark.jsx'
+import { company, sections } from '../data/content.js'
 
 const links = sections.filter((s) => s.nav)
 
@@ -22,24 +23,12 @@ export default function Nav({ active, progress }) {
   return (
     <header className={`nav ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="nav__inner">
-        <a className="mark" href="#top" onClick={() => setOpen(false)}>
-          <span className="mark__glyph" aria-hidden="true">
-            <svg viewBox="0 0 28 32" fill="none">
-              <path d="M4 3h11a6.5 6.5 0 0 1 0 13H4z" stroke="currentColor" strokeWidth="1.6" />
-              <path d="M4 16h12.5a6.5 6.5 0 0 1 0 13H4z" stroke="currentColor" strokeWidth="1.6" />
-            </svg>
-          </span>
-          <span className="mark__text">
-            <strong>BNP Capital Advisory</strong>
-            <em>PT Brata Nusa Pratama</em>
-          </span>
-        </a>
+        <Mark subtitle={company.legal} onClick={() => setOpen(false)} />
 
         <nav className="nav__links" aria-label="Sections">
           {links.map((s) => (
             <a key={s.id} href={`#${s.id}`} className={active === s.id ? 'is-active' : undefined}>
-              <span className="nav__num">{s.index}</span>
-              {s.label}
+              {s.short ?? s.label}
             </a>
           ))}
         </nav>
