@@ -1,13 +1,18 @@
-import logo from '../assets/bnp-mark.webp'
+import lockup from '../assets/bnp-lockup.webp'
 import { company } from '../data/content.js'
 
 /**
- * The wordmark lockup. The logo file carries its own stacked "BNP CAPITAL
- * ADVISORY" type, but at nav size that would be illegible and would repeat the
- * text beside it, so only the cube monogram is used and the name is set in the
- * page's own typeface. On ink backgrounds the mark is reversed to a solid
- * silhouette — the letterforms are transparent knockouts, so they survive it,
- * whereas the navy face of the cube would otherwise disappear.
+ * The logo lockup. The artwork carries its own wordmark, so the name is no
+ * longer set in type beside it — that would duplicate it. The file is trimmed
+ * to its content box, so the declared height is the visible height.
+ *
+ * Sizing is deliberate: "ADVISORY" is only 13.9% of the artwork's height, so
+ * below roughly 40px it stops being readable. See the height rules in the
+ * stylesheet before shrinking it.
+ *
+ * On ink backgrounds the lockup is reversed to a flat ivory silhouette; the
+ * navy wordmark and cube face would otherwise disappear, and the letterforms
+ * are transparent knockouts so they survive the treatment.
  */
 export default function Mark({ variant = 'nav', subtitle, onClick }) {
   return (
@@ -17,11 +22,8 @@ export default function Mark({ variant = 'nav', subtitle, onClick }) {
       onClick={onClick}
       aria-label={`${company.name} — home`}
     >
-      <img className="mark__glyph" src={logo} width="222" height="240" alt="" />
-      <span className="mark__text">
-        <strong>{company.name}</strong>
-        {subtitle && <em>{subtitle}</em>}
-      </span>
+      <img className="mark__lockup" src={lockup} width="685" height="221" alt="" />
+      {subtitle && <span className="mark__sub">{subtitle}</span>}
     </a>
   )
 }

@@ -358,36 +358,22 @@ canvas {
   min-width: 0;
 }
 
-.mark__glyph {
-  height: 32px;
+/* Floor of 40px: below that the artwork's "ADVISORY" line falls under ~5.5px
+   and stops being readable. */
+.mark__lockup {
+  height: clamp(40px, 3.3vw, 48px);
   width: auto;
   display: block;
   flex: none;
 }
 
-.mark__text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-  min-width: 0;
-}
-
-.mark__text strong {
-  font-family: var(--sans);
-  font-size: clamp(0.75rem, 0.35vw + 0.68rem, 0.875rem);
-  font-weight: 500;
-  letter-spacing: 0.075em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.mark__text em {
+.mark__sub {
   font-family: var(--mono);
-  font-style: normal;
-  font-size: 0.5625rem;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
   color: var(--ink-3);
+  max-width: 46ch;
 }
 
 .nav__links {
@@ -1827,43 +1813,31 @@ canvas {
   border-bottom: 1px solid rgba(245, 243, 238, 0.14);
 }
 
-.mark--footer .mark__glyph,
-.mark--footer .mark__text strong {
-  color: var(--paper);
-}
-
+/* The footer has room, so the lockup runs larger with the tagline stacked
+   beneath it rather than set alongside. */
 .mark--footer {
+  flex-direction: column;
   align-items: flex-start;
+  gap: 0.85rem;
   min-width: 0;
 }
 
-.mark--footer .mark__glyph {
-  margin-top: 2px;
-  height: 38px;
-  /* Reversed to a flat ivory silhouette: the cube's navy face is all but
-     invisible on the ink background. The letterforms are transparent
+.mark--footer .mark__lockup {
+  height: clamp(44px, 4vw, 56px);
+  /* Reversed to a flat ivory silhouette: the navy wordmark and cube face are
+     all but invisible on the ink background. The letterforms are transparent
      knockouts, so they read through the silhouette. */
   filter: brightness(0) invert(1);
-  opacity: 0.88;
+  opacity: 0.9;
   transition: opacity 0.4s var(--ease);
 }
 
-.mark--footer:hover .mark__glyph {
+.mark--footer:hover .mark__lockup {
   opacity: 1;
 }
 
-.mark--footer .mark__text {
-  min-width: 0;
-  gap: 0.2rem;
-}
-
-.mark--footer .mark__text em {
+.mark--footer .mark__sub {
   color: rgba(245, 243, 238, 0.5);
-  text-transform: none;
-  letter-spacing: 0.06em;
-  font-size: 0.625rem;
-  line-height: 1.5;
-  max-width: 46ch;
 }
 
 .footer__back {
@@ -2118,7 +2092,7 @@ canvas {
     gap: 1.25rem;
   }
 
-  .mark--footer .mark__text em {
+  .mark--footer .mark__sub {
     max-width: none;
   }
 }
