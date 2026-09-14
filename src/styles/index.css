@@ -582,6 +582,10 @@ canvas {
 }
 
 .rail__label {
+  /* Enabled only once the shell has moved far enough right to clear the rail
+     — see the 1600px query in RESPONSIVE. Measured: the expanded rail ends at
+     x=197, and content starts left of that until ~1560px. */
+  display: none;
   opacity: 0;
   transform: translateX(-6px);
   white-space: nowrap;
@@ -1927,6 +1931,14 @@ canvas {
 @media (min-width: 1440px) {
   .rail {
     display: flex;
+  }
+}
+
+/* Below this the rail is ticks and numbers only; its written-out labels would
+   run into the body copy. */
+@media (min-width: 1600px) {
+  .rail__label {
+    display: inline;
   }
 }
 
